@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Tabs from '../components/Tabs.astro';
+---
+
+<Layout title="Interview Test (Astro + accessible tabs component)">
+    <main>
+        <div class="container">
+            <h1>Kev Bonett:<br/>Interview Test</h1>
+
+            <h2>Tabbed component demo - using a mock API</h2>
+            <Tabs mock="true" />
+
+            <h2>Tabbed component demo - using hardcoded data</h2>
+            <p>Backup, in case API call fails!</p>
+            <Tabs mock="false" />
+
+            <h2>Implementation details</h2>
+            <ul>
+                <li>This demo has been built using the <a href="https://astro.build/">Astro framework</a>.</li>
+                <li>A mock JSON API response has been used for the content inside the tab component itself. In a real world scenario, the HTML heading level would be configurable rather than being hardcoded to <code>&lt;h3&gt;</code>, and the content would probably be rich HTML (e.g. from a WYSIWYG editor) rather than a single line of text.</li>
+                <li>I have styled the typography and basic layout to closely match the existing live website.</li>
+                <li>I have configured Stylelint for CSS code linting, but I haven't configured Prettier and Eslint.</li>
+            </ul>
+
+            <h3>Accessibility considerations</h3>
+            <ul>
+                <li>All the <a href="https://www.w3.org/WAI/ARIA/apg/patterns/tabs/">W3C recommended WAI-ARIA roles, properties and states</a> for a tab component have been implemented.</li>
+                <li>The rendered component has been tested using just a keyboard, a screen reader (NVDA), and the <a href="https://www.deque.com/axe/devtools/chrome-browser-extension/">AxeCore API browser extension</a>.</li>
+                <li>For an alternative approach to building a tabs component, please see <a href="https://basher.github.io/Web-UI-Boilerplate/?path=/story/components-tabs--tabs">my UI boilerplate tabs</a>, which uses a recommended pattern of "table of content" links in the source HTML, rather than headings.</li>
+            </ul>
+
+            <h3>Responsive behaviour</h3>
+            <ul>
+                <li>I have applied a simple horizontal overflow to the tabs, rather than "stacking" the tabs vertically, or resorting to a more complex solution of converting the tabs to accordions on mobile.</li>
+                <li>Font sizes have not been adjusted for smaller viewports.</li>
+            </ul>
+        </div>
+    </main>
+</Layout>

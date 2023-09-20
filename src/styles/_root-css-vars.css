@@ -1,0 +1,31 @@
+:root {
+    /* Color values are specified as a space-separated list of HSL values. */
+    --color-brand: 203 90% 39%;
+    --color-text: 0 0% 80%;
+    --color-background: 0 0% 98%;
+    --color-link: 203 90% 39%;
+    --color-focus: 203 90% 39%;
+
+    --type-font-fallback: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --type-font-family: 'Roboto', var(--type-font-fallback);
+    --type-font-family-title: 'Roboto', var(--type-font-fallback);
+
+    --type-font-size: 1.125rem;
+    --type-font-size-m: 1.3rem;
+    --type-font-size-h3: 1.75rem;
+    --type-font-size-h2: 2.25rem;
+    --type-font-size-h1: 2.75rem;
+
+    --gutter-s: 0.5rem;
+    --gutter: 1rem;
+    --gutter-m: 1.25rem;
+    --gutter-l: 1.5rem;
+    --gutter-xl: 3rem;
+
+    --border-radius: 0.3125rem;
+    --border-width: 0.125rem;
+
+    --sticky-height: 6rem;
+
+    --transition: 0.1s ease-in-out;
+}

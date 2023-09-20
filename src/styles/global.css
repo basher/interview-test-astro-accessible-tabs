@@ -1,0 +1,120 @@
+/*
+----------------------------------------------------------------------------
+CSS Reset.
+----------------------------------------------------------------------------
+*/
+
+html {
+    accent-color: hsl(var(--color-brand));
+    text-size-adjust: none;
+}
+
+:where(*, *::after, *::before) {
+    box-sizing: border-box;
+}
+
+* {
+    background: transparent;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+:is(html, body) {
+    background-color: hsl(var(--color-background));
+    color: var(--color-text);
+    min-block-size: 100vh;
+}
+
+:is(button, a) {
+    appearance: none;
+    color: hsl(var(--color-link));
+    cursor: pointer;
+    font-weight: 500;
+    -webkit-tap-highlight-color: hsl(0 0% 0% / 0%);
+}
+
+a:hover {
+    color: var(--color-text);
+    text-decoration: none;
+    transition: color var(--transition);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    :is(html, body) {
+        scroll-behavior: smooth;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        /* stylelint-disable declaration-no-important */
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/*
+----------------------------------------------------------------------------
+Typography.
+----------------------------------------------------------------------------
+*/
+body {
+    font-family: var(--type-font-family);
+    font-size: var(--type-font-size);
+    line-height: 1.6;
+}
+
+:is(h1, h2) {
+    font-family: var(--type-font-family-title);
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: var(--type-font-size-h1);
+}
+
+h2 {
+    font-size: var(--type-font-size-h2);
+    font-weight: 500;
+}
+
+h3 {
+    font-size: var(--type-font-size-h3);
+    font-weight: 500;
+}
+
+:is(h1, h2, h3, p) {
+    margin-block-end: var(--gutter);
+}
+
+:is(h2, h3) {
+    margin-block-start: var(--gutter-xl);
+}
+
+ul:not([class]) {
+    padding-inline-start: var(--gutter-xl);
+}
+
+button {
+    font: inherit;
+    font-weight: 500;
+}
+
+/*
+----------------------------------------------------------------------------
+:focus.
+----------------------------------------------------------------------------
+*/
+:focus-visible {
+    box-shadow: 0 0 0 0.125rem hsl(var(--color-focus));
+    outline: 0.125rem solid transparent;
+    transition: box-shadow var(--transition);
+}
+
+:focus:not(:focus-visible) {
+    outline: 0.125rem solid transparent;
+}

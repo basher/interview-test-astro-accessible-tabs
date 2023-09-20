@@ -1,0 +1,103 @@
+---
+const mockAPIpath = 'https://run.mocky.io/v3/33b0a9fe-01ac-42ca-bcf0-11e333f4adc1';
+const response = await fetch(mockAPIpath);
+const data = await response.json();
+
+interface Props {
+    mock: string;
+}
+const { mock } = Astro.props;
+---
+
+<div class="tabs" data-module="tabs">
+    {mock === 'true' && data.tabs.map((tab: any) =>
+        <div data-tabpanel>
+            <h3 id={tab.id} data-tab>
+                {tab.title}
+            </h3>
+            <p>
+                {tab.content}
+            </p>
+        </div>
+    )}
+
+    <!-- Backup in case mock API call fails! -->
+    {mock === 'false' &&
+        <div data-tabpanel>
+            <h3 id="tab1a" data-tab>Tab 1a</h3>
+            <p>Tab 1a - Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum maxime amet omnis numquam voluptatem exercitationem nemo deleniti dolorem perferendis vitae? Qui molestias inventore illum ad ullam eum unde omnis temporibus.</p>
+        </div>
+        <div data-tabpanel>
+            <h3 id="tab2a" data-tab>Tab 2a</h3>
+            <p>Tab 2a - Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+        </div>
+        <div data-tabpanel>
+            <h3 id="tab3a" data-tab>Tab 3a</h3>
+            <p>Tab 3a - Voluptatum maxime amet omnis numquam voluptatem exercitationem nemo deleniti dolorem perferendis vitae?</p>
+        </div>
+        <div data-tabpanel>
+            <h3 id="tab4a" data-tab>Tab 4a with a very long title to test overflow</h3>
+            <p>Tab 4a - Qui molestias inventore illum ad ullam eum unde omnis temporibus.</p>
+        </div>
+    }
+</div>
+
+<script>
+    import Tabs from '../javascript/tabs';
+    Tabs.start();
+</script>
+
+<style is:global>
+    [role='tablist'] {
+        bottom: calc(var(--border-width) * -1);
+        display: flex;
+        gap: var(--gutter-s);
+        overflow-x: auto;
+        position: relative;
+    }
+
+    [role='tab'] {
+        --color-text: 0 0% 98%;
+
+        background: hsl(var(--color-brand));
+        border: var(--border-width) solid hsl(var(--color-brand));
+        border-start-end-radius: var(--border-radius);
+        border-start-start-radius: var(--border-radius);
+        color: hsl(var(--color-text));
+        padding: var(--gutter-s);
+        transition: all var(--transition);
+        white-space: nowrap;
+    }
+
+    [role='tab'][aria-selected='true'] {
+        background: hsl(var(--color-background));
+        border-block-end-color: hsl(var(--color-background));
+        color: hsl(var(--color-brand));
+    }
+
+    [role='tab'][aria-selected='true']:first-child {
+        position: relative;
+    }
+
+    [role='tab'][aria-selected='true']:first-child::after {
+        background: hsl(var(--color-brand));
+        block-size: var(--border-width);
+        content: '';
+        display: block;
+        inline-size: var(--border-width);
+        inset-block-end: calc(var(--border-width) * -1);
+        inset-inline-start: calc(var(--border-width) * -1);
+        position: absolute;
+    }
+
+    [role='tab']:focus-visible {
+        box-shadow: none;
+    }
+
+    [role='tabpanel'] {
+        border: var(--border-width) solid hsl(var(--color-brand));
+        border-radius: var(--border-radius);
+        border-start-start-radius: 0;
+        padding: var(--gutter-m);
+    }
+</style>

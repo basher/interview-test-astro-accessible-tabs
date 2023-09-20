@@ -1,0 +1,7 @@
+{
+    "stylelint.enable": true,
+    "stylelint.validate": [
+        "astro",
+        "css",
+    ],
+}

@@ -1,0 +1,10 @@
+main {
+    margin-block: var(--sticky-height);
+    padding-block-start: var(--gutter-l);
+}
+
+.container {
+    margin-inline: auto;
+    max-inline-size: 50rem;
+    padding-inline: var(--gutter-m);
+}

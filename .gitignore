@@ -1,0 +1,12 @@
+# build output
+dist/
+
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+yarn-debug.log*
+yarn-error.log*
